@@ -6,7 +6,7 @@ import us.ihmc.yoVariables.registry.YoVariableRegistry;
 public class GuaraController extends GuaraYoVariablesDefinition implements RobotController {
 
 	public GuaraYoVariablesDefinition yo;
-	public Andadura3 a3;
+	public GuaraWaveGait a3;
 
 	private final YoVariableRegistry registry = new YoVariableRegistry("guaraController");
 
@@ -38,7 +38,7 @@ public class GuaraController extends GuaraYoVariablesDefinition implements Robot
 	   super(rob);
 		System.out.println("guaraController");
 
-		a3 = new Andadura3();
+		a3 = new GuaraWaveGait();
 		assert a3 != null;
 		// System.out.println("a3==null");
 		// System.out.println(a3 == null);

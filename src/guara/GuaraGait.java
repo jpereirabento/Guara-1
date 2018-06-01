@@ -1,6 +1,6 @@
 package guara;
 
-public abstract class GuaraAndadura {
+public abstract class GuaraGait {
 
 	/*
 	 * Esta é uma classe abstrata que implementa a interface , que são os
@@ -27,7 +27,7 @@ public abstract class GuaraAndadura {
 
 	// (DT=4/10000)
 
-	public GuaraAndadura() {
+	public GuaraGait() {
 		// TODO Auto-generated constructor stub
 	}
 

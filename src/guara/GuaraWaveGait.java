@@ -1,8 +1,6 @@
 package guara;
 
-import guara.GuaraCinematica;
-
-public class Andadura3 extends GuaraAndadura {
+public class GuaraWaveGait extends GuaraGait {
 
 	/*
 	 * Esta andadura eÌ� regular e e simeÌ�trica, ou seja, Î²Î¹ = Î² = constante para
@@ -10,7 +8,7 @@ public class Andadura3 extends GuaraAndadura {
 	 * 180 graus, ou 0.5*T fora de fase
 	 */
 
-	GuaraCinematica cin = new GuaraCinematica();
+	GuaraKinematics cin = new GuaraKinematics();
 
 	// variÃ¡veis de teste
 
@@ -28,9 +26,9 @@ public class Andadura3 extends GuaraAndadura {
 			{ 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 					1, 1, 1, 1, 1, 1, 1 } };
 
-	public Andadura3() {
+	public GuaraWaveGait() {
 		//
-		name = "Andadura3";
+		name = "WaveGait";
 		ciclosDeApoio = 27;
 		ciclosDeApoioCom4patas = 3;
 		ciclosDeVoo = 5;

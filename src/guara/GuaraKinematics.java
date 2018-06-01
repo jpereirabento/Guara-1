@@ -10,7 +10,7 @@ package guara;
 
 //package guara;
 
-public class GuaraCinematica {
+public class GuaraKinematics {
 
 	GuaraRobot rob;
 
@@ -23,7 +23,7 @@ public class GuaraCinematica {
 	double a2,a3,a4; // links da perna
 	double x3, y3, z3; // coordenadas cartezianas do tornozelo
 
-	public GuaraCinematica() {
+	public GuaraKinematics() {
 		// TODO Auto-generated constructor stub
 		rob = new GuaraRobot();
 		a2 = rob.a2();
