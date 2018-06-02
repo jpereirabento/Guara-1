@@ -2,6 +2,7 @@ package guara;
 
 import us.ihmc.simulationconstructionset.SimulationConstructionSet;
 import us.ihmc.simulationconstructionset.util.simulationRunner.BlockingSimulationRunner.SimulationExceededMaximumTimeException;
+//import us.ihmc.simulationconstructionset.util.simulationRunner.BlockingSimulationRunner.*;
 
 public class GuaraSimulation
 {
@@ -32,16 +33,16 @@ public class GuaraSimulation
       myThread.start();
    }
 
-   public boolean run(double simulationTime) throws SimulationExceededMaximumTimeException
-   {
-      return blockingSimulationRunner.simulateAndBlockAndCatchExceptions(simulationTime);
-   }
+//   public boolean run(double simulationTime) throws SimulationExceededMaximumTimeException
+//   {
+//      return blockingSimulationRunner.simulateAndBlockAndCatchExceptions(simulationTime);
+//   }
 
    public static void main(String[] args) throws SimulationExceededMaximumTimeException
    {
       GuaraSimulation guaraSimulation = new GuaraSimulation();
-      guaraSimulation.run(TIME);
-//      ThreadTools.sleepForever();
+//      guaraSimulation.run(TIME);
+////      ThreadTools.sleepForever();
    }
 
 }

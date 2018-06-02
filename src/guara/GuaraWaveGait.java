@@ -1,78 +1,76 @@
 package guara;
 
-public class GuaraWaveGait extends GuaraGait {
+public class GuaraWaveGait extends GuaraGait
+{
 
-	/*
-	 * Esta andadura eÌ� regular e e simeÌ�trica, ou seja, Î²Î¹ = Î² = constante para
-	 * todas as patas e duas patas correspondentes em lados opostos, estaraÌƒo a
-	 * 180 graus, ou 0.5*T fora de fase
-	 */
+   /*
+    * Position controlled foothold regular and symmetric gait is , same load
+    * factor for all feet and two corresponding opposite sides feet will be 180
+    * degrees, or 0.5 * T out of phase. Foot flight path is a cycloid.
+    */
 
-	GuaraKinematics cin = new GuaraKinematics();
+   GuaraKinematics cin = new GuaraKinematics();
+   int setPointsPerColumn = 0;
+   // test variables
+   double cycloidRadius = 0.1; // flight cycloid radius
+   double hRobo = 0.3; //yet fixed
 
-	// variÃ¡veis de teste
+   int waveGaitMatrix[][] = new int[][] {
 
-	double raio = 0.1; // raio para geraÃ§Ã£o da cicloide de voo
-	double hRobo = 0.3; //yet fixed
+         {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0},
+         {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1},
+         {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+         {0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
 
-	int matrizDeAndadura[][] = new int[][] {
+   public GuaraWaveGait(int setPoints)
+   {
+      // gait matrix data
+      name = "WaveGait";
+      strokeColumns = 27;
+      strokeColumnsWith4Feet = 3;
+      flightColumns = 5;
+      totalOfColumns = 32;
+      setPointsPerColumn = setPoints;
+   }
 
-			{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-					1, 1, 1, 1, 1, 0, 0, 0, 0, 0 },
-			{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0,
-					0, 0, 1, 1, 1, 1 },
-			{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1,
-					1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-			{ 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-					1, 1, 1, 1, 1, 1, 1 } };
+   public void setPointsPerColumn(int setPoints)
+   {
+      setPointsPerColumn = setPoints;
+   }
 
-	public GuaraWaveGait() {
-		//
-		name = "WaveGait";
-		ciclosDeApoio = 27;
-		ciclosDeApoioCom4patas = 3;
-		ciclosDeVoo = 5;
-		totalDeCiclos = 32;
-		//
-	}
+   double[] footPath(int footNumber, int setPointCounter, double x4, double y4, double z4)
+   {
+      //		System.out.println("GuaraWaveGait");
+      double[] xyz = {0.0, 0.0, 0.0};
+      int columnCounter = (int) (setPointCounter / (totalOfColumns * setPointsPerColumn)); // for matrix set point column  counter
+      int footState = waveGaitMatrix[footNumber][(int) (setPointCounter - columnCounter * totalOfColumns) - 1];
+      switch (footState)
+      {
+      case 0: // foot in flight
+         xyz[0] = x4 + DeltaX();
+         xyz[1] = y4;
+         xyz[2] = z4;
+         break;
+      case 1: /*
+               * foot in stroke; straight walk without lateral movement and the
+               * support phase is a straight trajectory parallel to the robot's
+               * body
+               */
+         double deltaX = DeltaX();
+         double teta = deltaX / cycloidRadius;
 
-	double[] trajPata(int iPata, int iSP, double x4, double y4, double z4) {
-		System.out.println("andadura3");
+         xyz[0] = x4 + DeltaX();
+         xyz[1] = y4;
+         xyz[2] = z4 + (1 - Math.cos(teta)) * cycloidRadius;
+         break;
+      }
+      return xyz;
+   }
 
-		double[] xyz = { 0.0, 0.0, 0.0 };
-
-		int iCiclos = (int) (iSP / totalDeCiclos); // contador de ciclos da
-
-		// andadura
-		int i = matrizDeAndadura[iPata][(int) (iSP - iCiclos * totalDeCiclos) - 1];
-
-		switch (i) {
-		case 0: // pata em voo
-			// o voo Ã© uma trajetÃ³ria em ciclÃ³ide
-			xyz[0] = x4 + DeltaX();
-			xyz[1] = y4;
-			xyz[2] = z4;
-			break;
-		case 1: // pata em apoio
-			//andar reto sem movimento lateral
-			//o apoio Ã© uma trajetÃ³ria reta paralela Ã  plataforma
-			double deltaX = DeltaX();
-			double teta = deltaX / raio;
-
-			xyz[0] = x4 + DeltaX();
-			xyz[1] = y4;
-			xyz[2] = z4 + (1 - Math.cos(teta)) * raio;
-			break;
-		}
-		return xyz;
-	}
-
-	double[] juntasPerna(int iPerna, int iSP, double x4, double y4, double z4) {// ,
-		// double deltaX) {
-
-		double[] xyz = trajPata(iPerna, iSP, x4, y4, z4);// , deltaX);
-		double[] juntas = cin.cinInv(xyz);
-
-		return juntas;
-	}
+   double[] legJoints(int legNumber, int setPointCounter, double x4, double y4, double z4)
+   {
+      double[] xyz = footPath(legNumber, setPointCounter, x4, y4, z4);
+      double[] joints = cin.cinInv(xyz);
+      return joints;
+   }
 }

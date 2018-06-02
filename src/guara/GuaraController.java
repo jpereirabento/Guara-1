@@ -140,10 +140,10 @@ public class GuaraController extends GuaraYoVariablesDefinition implements Robot
 
 		// leg 0 joints control
 
-		spTeta[0] = a3.juntasPerna(0, 1, xyz[0][0], xyz[0][1], xyz[0][2]);
-		spTeta[0] = a3.juntasPerna(0, 1, xyz[0][0], xyz[0][1], xyz[0][2]);
-		spTeta[0] = a3.juntasPerna(0, 1, xyz[0][0], xyz[0][1], xyz[0][2]);
-		spTeta[0] = a3.juntasPerna(0, 1, xyz[0][0], xyz[0][1], xyz[0][2]);
+		spTeta[0] = a3.legJoints(0, 1, xyz[0][0], xyz[0][1], xyz[0][2]);
+		spTeta[0] = a3.legJoints(0, 1, xyz[0][0], xyz[0][1], xyz[0][2]);
+		spTeta[0] = a3.legJoints(0, 1, xyz[0][0], xyz[0][1], xyz[0][2]);
+		spTeta[0] = a3.legJoints(0, 1, xyz[0][0], xyz[0][1], xyz[0][2]);
 
 		yo.tau_abdHip0X.set(
 				+Kp0 * (spTeta[0][0] - tetaAt[0][0]) + Kd0 * yo.qd_abdHip0X.getDoubleValue() + Ki0 * (inAt[0][0] + inAn[0][0]));
