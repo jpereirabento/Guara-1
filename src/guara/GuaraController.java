@@ -38,7 +38,7 @@ public class GuaraController extends GuaraYoVariablesDefinition implements Robot
 	   super(rob);
 		System.out.println("guaraController");
 
-		a3 = new GuaraWaveGait();
+		a3 = new GuaraWaveGait(128);
 		assert a3 != null;
 		// System.out.println("a3==null");
 		// System.out.println(a3 == null);
@@ -101,20 +101,20 @@ public class GuaraController extends GuaraYoVariablesDefinition implements Robot
 		tetaAt[0][2] = q_flexKnee0.getDoubleValue();
 		tetaAt[0][3] = q_flexAnkle0.getDoubleValue();
 
-		tetaAt[1][0] = q_abdHip0X.getDoubleValue();
-		tetaAt[1][1] = q_abdHip0Y.getDoubleValue();
-		tetaAt[1][2] = q_flexKnee0.getDoubleValue();
-		tetaAt[1][3] = q_flexAnkle0.getDoubleValue();
+		tetaAt[1][0] = q_abdHip1X.getDoubleValue();
+		tetaAt[1][1] = q_abdHip1Y.getDoubleValue();
+		tetaAt[1][2] = q_flexKnee1.getDoubleValue();
+		tetaAt[1][3] = q_flexAnkle1.getDoubleValue();
 
-		tetaAt[2][0] = q_abdHip0X.getDoubleValue();
-		tetaAt[2][1] = q_abdHip0Y.getDoubleValue();
-		tetaAt[2][2] = q_flexKnee0.getDoubleValue();
-		tetaAt[2][3] = q_flexAnkle0.getDoubleValue();
+		tetaAt[2][0] = q_abdHip2X.getDoubleValue();
+		tetaAt[2][1] = q_abdHip2Y.getDoubleValue();
+		tetaAt[2][2] = q_flexKnee2.getDoubleValue();
+		tetaAt[2][3] = q_flexAnkle2.getDoubleValue();
 
-		tetaAt[3][0] = q_abdHip0X.getDoubleValue();
-		tetaAt[3][1] = q_abdHip0Y.getDoubleValue();
-		tetaAt[3][2] = q_flexKnee0.getDoubleValue();
-		tetaAt[3][3] = q_flexAnkle0.getDoubleValue();
+		tetaAt[3][0] = q_abdHip3X.getDoubleValue();
+		tetaAt[3][1] = q_abdHip3Y.getDoubleValue();
+		tetaAt[3][2] = q_flexKnee3.getDoubleValue();
+		tetaAt[3][3] = q_flexAnkle3.getDoubleValue();
 
 		// legs' integral terms
 
@@ -123,20 +123,20 @@ public class GuaraController extends GuaraYoVariablesDefinition implements Robot
 		inAt[0][2] = (spTeta[0][2] + q_flexKnee0.getDoubleValue()) / 2;
 		inAt[0][3] = (spTeta[0][3] + q_flexAnkle0.getDoubleValue()) / 2;
 
-		inAt[1][0] = (spTeta[0][0] + q_abdHip1X.getDoubleValue()) / 2;
-		inAt[1][1] = (spTeta[0][1] + q_abdHip1Y.getDoubleValue()) / 2;
-		inAt[1][2] = (spTeta[0][2] + q_flexKnee1.getDoubleValue()) / 2;
-		inAt[1][3] = (spTeta[0][3] + q_flexAnkle1.getDoubleValue()) / 2;
+		inAt[1][0] = (spTeta[1][0] + q_abdHip1X.getDoubleValue()) / 2;
+		inAt[1][1] = (spTeta[1][1] + q_abdHip1Y.getDoubleValue()) / 2;
+		inAt[1][2] = (spTeta[1][2] + q_flexKnee1.getDoubleValue()) / 2;
+		inAt[1][3] = (spTeta[1][3] + q_flexAnkle1.getDoubleValue()) / 2;
 
-		inAt[2][0] = (spTeta[0][0] + q_abdHip2X.getDoubleValue()) / 2;
-		inAt[2][1] = (spTeta[0][1] + q_abdHip2Y.getDoubleValue()) / 2;
-		inAt[2][2] = (spTeta[0][2] + q_flexKnee2.getDoubleValue()) / 2;
-		inAt[2][3] = (spTeta[0][3] + q_flexAnkle2.getDoubleValue()) / 2;
+      inAt[2][0] = (spTeta[2][0] + q_abdHip2X.getDoubleValue()) / 2;
+      inAt[2][1] = (spTeta[2][1] + q_abdHip2Y.getDoubleValue()) / 2;
+      inAt[2][2] = (spTeta[2][2] + q_flexKnee2.getDoubleValue()) / 2;
+      inAt[2][3] = (spTeta[2][3] + q_flexAnkle2.getDoubleValue()) / 2;
 
-		inAt[3][0] = (spTeta[0][0] + q_abdHip3X.getDoubleValue()) / 2;
-		inAt[3][1] = (spTeta[0][1] + q_abdHip3Y.getDoubleValue()) / 2;
-		inAt[3][2] = (spTeta[0][2] + q_flexKnee3.getDoubleValue()) / 2;
-		inAt[3][3] = (spTeta[0][3] + q_flexAnkle3.getDoubleValue()) / 2;
+		inAt[3][0] = (spTeta[3][0] + q_abdHip3X.getDoubleValue()) / 2;
+		inAt[3][1] = (spTeta[3][1] + q_abdHip3Y.getDoubleValue()) / 2;
+		inAt[3][2] = (spTeta[3][2] + q_flexKnee3.getDoubleValue()) / 2;
+		inAt[3][3] = (spTeta[3][3] + q_flexAnkle3.getDoubleValue()) / 2;
 
 		// leg 0 joints control
 

@@ -15,10 +15,8 @@ public class GuaraSimulation
    {
 
       GuaraRobot Guara = new GuaraRobot();
-      System.out.println("guaraRobot Guara = new guaraRobot();");
       sim = new SimulationConstructionSet(Guara);
-      System.out.println("sim = new SimulationConstructionSet(Guara);");
-      //		Guara.setController(new guaraController(Guara));
+      //Guara.setController(new GuaraController(Guara));
       //		System.out.println("Guara.setController");
       sim.setGroundVisible(true);
       sim.setCameraTracking(false, false, false, false);

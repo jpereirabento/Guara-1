@@ -9,27 +9,56 @@ public class GuaraYoVariablesDefinition {
 	protected GuaraRobot rob;
 	// floating joint - corpo
 
-	public YoDouble q_bodyJoint_x, q_bodyJoint_y, q_bodyJoint_z, qd_bodyJoint_x, qd_bodyJoint_y, qd_bodyJoint_z,
-			qdd_bodyJoint_x, qdd_bodyJoint_y, qdd_bodyJoint_z, q_bodyJoint_qs, q_bodyJoint_qx, q_bodyJoint_qy,
-			q_bodyJoint_qz, qd_bodyJoint_wx, qd_bodyJoint_wy, qd_bodyJoint_wz, qdd_bodyJoint_wx, qdd_bodyJoint_wy,
-			qdd_bodyJoint_wz;
+	private final YoVariableRegistry registry = new YoVariableRegistry("guaraYoVariables");
+	public YoDouble q_bodyJoint_x = new YoDouble("q_BodyJoint_x", registry);
+	public YoDouble q_bodyJoint_y = new YoDouble("q_BodyJoint_y", registry);
+	public YoDouble q_bodyJoint_z = new YoDouble("q_BodyJoint_z", registry);
+	public YoDouble qd_bodyJoint_x = new YoDouble("qd_BodyJoint_x", registry);
+	public YoDouble qd_bodyJoint_y = new YoDouble("qd_BodyJoint_y", registry);
+	public YoDouble qd_bodyJoint_z = new YoDouble("qd_BodyJoint_z", registry);
+	public YoDouble qdd_bodyJoint_x = new YoDouble("qdd_BodyJoint_x", registry);
+	public YoDouble qdd_bodyJoint_y = new YoDouble("qdd_BodyJoint_y", registry);
+	public YoDouble qdd_bodyJoint_z = new YoDouble("qdd_BodyJoint_z", registry);
+	public YoDouble q_bodyJoint_qs = new YoDouble("q_bodyJoint_qs", registry);
+	public YoDouble q_bodyJoint_qx = new YoDouble("q_bodyJoint_qx", registry);
+	public YoDouble q_bodyJoint_qy = new YoDouble("q_bodyJoint_qy", registry);
+	public YoDouble q_bodyJoint_qz = new YoDouble("q_bodyJoint_qz", registry);
+	public YoDouble qd_bodyJoint_wx = new YoDouble("qd_bodyJoint_wx", registry);
+	public YoDouble qd_bodyJoint_wy = new YoDouble("qd_bodyJoint_wy", registry);
+	public YoDouble qd_bodyJoint_wz = new YoDouble("qd_bodyJoint_wz", registry);
+	public YoDouble qdd_bodyJoint_wx = new YoDouble("qdd_bodyJoint_wx", registry);
+	public YoDouble qdd_bodyJoint_wy = new YoDouble("qdd_bodyJoint_wy", registry);
+	public YoDouble qdd_bodyJoint_wz = new YoDouble("qdd_bodyJoint_wz", registry);
+
 
 	// universal joints- quadris
 
 	// quadril perna 0
 
-	public YoDouble q_abdHip0X, qd_abdHip0X, qdd_abdHip0X, tau_abdHip0X, q_abdHip0Y, qd_abdHip0Y, qdd_abdHip0Y,
-			tau_abdHip0Y;
+	public YoDouble q_abdHip0X= new YoDouble("q_abdHip0X", registry);
+	public YoDouble qd_abdHip0X= new YoDouble("qd_abdHip0X", registry);
+	public YoDouble qdd_abdHip0X= new YoDouble("qdd_abdHip0X", registry);
+//	, qd_abdHip0X, qdd_abdHip0X, tau_abdHip0X, q_abdHip0Y, qd_abdHip0Y, qdd_abdHip0Y,
+//			tau_abdHip0Y;
 
 	// quadril perna 1
 
-	public YoDouble q_abdHip1X, qd_abdHip1X, qdd_abdHip1X, tau_abdHip1X, q_abdHip1Y, qd_abdHip1Y, qdd_abdHip1Y,
-			tau_abdHip1Y;
+	public YoDouble q_abdHip1X= new YoDouble("q_abdHip1X", registry);
+	public YoDouble qd_abdHip1X= new YoDouble("qd_abdHip1X", registry);
+	public YoDouble qdd_abdHip1X= new YoDouble("qdd_abdHip1X", registry);
+	public YoDouble tau_abdHip1Y= new YoDouble("tau_abdHip1Y", registry);
+
+//	public YoDouble q_abdHip1X, qd_abdHip1X, qdd_abdHip1X, tau_abdHip1X, q_abdHip1Y, qd_abdHip1Y, qdd_abdHip1Y,
+//			tau_abdHip1Y;
 
 	// quadril perna 2
 
-	public YoDouble q_abdHip2X, qd_abdHip2X, qdd_abdHip2X, tau_abdHip2X, q_abdHip2Y, qd_abdHip2Y, qdd_abdHip2Y,
-			tau_abdHip2Y;
+	public YoDouble q_abdHip2X= new YoDouble("q_abdHip2X", registry);
+	public YoDouble qd_abdHip2X= new YoDouble("qd_abdHip2X", registry);
+	public YoDouble qdd_abdHip2X= new YoDouble("qdd_abdHip2X", registry);
+	public YoDouble tau_abdHip2Y= new YoDouble("tau_abdHip2Y", registry);
+//	public YoDouble q_abdHip2X, qd_abdHip2X, qdd_abdHip2X, tau_abdHip2X, q_abdHip2Y, qd_abdHip2Y, qdd_abdHip2Y,
+//			tau_abdHip2Y;
 
 	// quadril perna 3
 
@@ -72,7 +101,6 @@ public class GuaraYoVariablesDefinition {
 
 	public YoDouble q_flexAnkle3, qd_flexAnkle3, qdd_flexAnkle3, tau_flexAnkle3;
 
-	private final YoVariableRegistry registry = new YoVariableRegistry("guaraYoVariables");
 
 	// construtor
 	public GuaraYoVariablesDefinition() {

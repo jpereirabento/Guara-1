@@ -11,8 +11,8 @@ public abstract class GuaraGait
     */
    double strokeColumns, strokeColumnsWith4Feet, flightColumns, totalOfColumns;
    int gaitMatrix[][];
-   int[] vetorPatas;
-   double[] xyz;
+   int[] vetorPatas = new int[4];
+   double[][][] xyz = new double[1][1][1];
    double deltaX;
    double a2, a3, a4;
    String name;
